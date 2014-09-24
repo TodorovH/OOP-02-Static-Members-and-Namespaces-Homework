@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Problem01Point3D
+namespace Problem01And02And03
 {
     class Point3D
     {
