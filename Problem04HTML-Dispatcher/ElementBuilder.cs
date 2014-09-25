@@ -12,6 +12,7 @@ namespace Problem04HTMLDispatcher
         private string elementName;
         private Dictionary<string, string> attributes = new Dictionary<string, string>();
         private string content = "";
+        private bool isImgOrInput = false;
 
         public ElementBuilder(string elementName)
         {
@@ -44,16 +45,29 @@ namespace Problem04HTMLDispatcher
             this.content = content;
         }
 
+        public void IsImgOrInput(bool isImgOrInput)
+        {
+            this.isImgOrInput = isImgOrInput;
+        }
+
         public override string ToString()
         {
             string attributesStr = "";
+            string result = "";
 
             foreach (var att in attributes)
             {
                 attributesStr += " " + att.Key + "=\"" + att.Value + "\"";
             }
 
-            string result = string.Format("<{0}{1}>{2}</{0}>", this.ElementName, attributesStr, this.content);
+            if (isImgOrInput == false)
+            {
+                result = string.Format("<{0}{1}>{2}</{0}>", this.ElementName, attributesStr, this.content);
+            }
+            else
+            {
+                result = string.Format("<{0}{1} />", this.ElementName, attributesStr);
+            }
             return result;
         }
 
